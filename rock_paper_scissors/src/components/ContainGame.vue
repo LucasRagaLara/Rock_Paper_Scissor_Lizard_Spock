@@ -1,62 +1,62 @@
 <template>
-    <div class="box_game">
-        <div class="game animate__animated" :class="zoom_in_out" ref="OpenCloseNav" @animationend="finaltransition">
-            <img src="../assets/bg-triangle.svg" alt="" class="to_back">
-                <div class="images_game">
-                    <div class="game1" @click="selectPaper">
-                        <div class="game1-interior">
-                            <img src="../assets/icon-paper.svg">
+        <div class="box_game">
+            <div class="game animate__animated" :class="zoom_in_out" ref="OpenCloseNav" @animationend="finaltransition">
+                <img src="../assets/bg-triangle.svg" alt="" class="to_back">
+                    <div class="images_game">
+                        <div class="game1" @click="selectPaper">
+                            <div class="game1-interior">
+                                <img src="../assets/icon-paper.svg">
+                            </div>
+                        </div>
+                        <div class="game2" @click="selectScissors">
+                            <div class="game2-interior">
+                                <img src="../assets/icon-scissors.svg">
+                            </div>
+                        </div>
+                        <div class="game3" @click="selectRock">
+                            <div class="game3-interior">
+                                <img src="../assets/icon-rock.svg">
+                            </div>
                         </div>
                     </div>
-                    <div class="game2" @click="selectScissors">
-                        <div class="game2-interior">
-                            <img src="../assets/icon-scissors.svg">
-                        </div>
+            </div>
+        </div>
+        <div id="picked" ref="pick">
+            <div class="images_game game-picked">
+                <h3 class="you_picked">You picked</h3>
+                <div class="circle_min circle_min1_left animate__animated" :class="fade_in" v-show="show_left">
+                </div>
+                <div class="circle_min circle_min2_left animate__animated" :class="fade_in" v-show="show_left">
+                </div>
+                <div class="circle_min circle_min3_left animate__animated" :class="fade_in" v-show="show_left">
+                </div>
+                <div :class="userSuperiorClass" class="game1_user">
+                    <div :class="`${userInteriorClass}-interior`">
+                        <img :src="userImage" alt="user choice">
                     </div>
-                    <div class="game3" @click="selectRock">
-                        <div class="game3-interior">
-                            <img src="../assets/icon-rock.svg">
-                        </div>
+                </div>
+            </div>
+            <div class="play_again animate__animated" v-show="show_play_again" :class="zoom_in_down">
+                <div class="winner_is">
+                    <h1>{{ winner_lose }}</h1>
+                    <button @click="play_again">PLAY AGAIN</button>
+                </div>
+            </div>
+            <div class="images_game game-picked">
+                <h3 class="the_machine_picked">The Computer picked</h3>
+                <div class="circle_min circle_min1_right animate__animated" :class="fade_in" v-show="show_right">
+                </div>
+                <div class="circle_min circle_min2_right animate__animated" :class="fade_in" v-show="show_right">
+                </div>
+                <div class="circle_min circle_min3_right animate__animated" :class="fade_in" v-show="show_right">
+                </div>
+                <div :class="machineSuperiorClass" class="game1_machine">
+                    <div :class="`${machineInteriorClass}-interior`">
+                        <img :src="machineImage">
                     </div>
                 </div>
-        </div>
-    </div>
-    <div id="picked" ref="pick">
-        <h3 class="you_picked">You picked</h3>
-        <h3 class="the_machine_picked">The Computer picked</h3>
-        <div class="images_game game-picked">
-            <div class="circle_min circle_min1_left animate__animated" :class="fade_in" v-show="show_left">
-            </div>
-            <div class="circle_min circle_min2_left animate__animated" :class="fade_in" v-show="show_left">
-            </div>
-            <div class="circle_min circle_min3_left animate__animated" :class="fade_in" v-show="show_left">
-            </div>
-            <div :class="userSuperiorClass" class="game1_user">
-                <div :class="`${userInteriorClass}-interior`">
-                    <img :src="userImage" alt="user choice">
-                </div>
             </div>
         </div>
-        <div class="play_again animate__animated" v-show="show_play_again" :class="zoom_in_down">
-            <div class="winner_is">
-                <h1>{{ winner_lose }}</h1>
-                <button @click="play_again">PLAY AGAIN</button>
-            </div>
-        </div>
-        <div class="images_game game-picked">
-            <div class="circle_min circle_min1_right animate__animated" :class="fade_in" v-show="show_right">
-            </div>
-            <div class="circle_min circle_min2_right animate__animated" :class="fade_in" v-show="show_right">
-            </div>
-            <div class="circle_min circle_min3_right animate__animated" :class="fade_in" v-show="show_right">
-            </div>
-            <div :class="machineSuperiorClass" class="game1_machine">
-                <div :class="`${machineInteriorClass}-interior`">
-                    <img :src="machineImage">
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
 export default {
@@ -239,94 +239,95 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
-
 #picked
     display: none
     align-items: center
-    width: 100%
+    width: 100vw
     justify-content: center
     color: #fff
-    .you_picked, .the_machine_picked
-        width: 30%
-        display: flex
-        align-items: center
-        margin-top: 5%
-        position: absolute
-        top: 9.375rem
-        justify-content: center
-        letter-spacing: 0.1rem
-    .circle_min
-        border: none
-        border-radius: 100%
-        width: 225px
-        height: 225px
-        position: absolute
-    .circle_min1_left
-        background-color: hsla(217, 16%, 45%, 0.14)
-        top: -0.6rem !important
-        left: -8.8rem !important
-    .circle_min2_left
-        background-color: hsla(217, 16%, 45%, 0.10)
-        width: 300px
-        height: 300px
-        top: -3.1rem !important
-        left: -11.2rem !important
-    .circle_min3_left
-        background-color: hsla(217, 16%, 45%, 0.06)
-        width: 375px
-        height: 375px
-        top: -5.3rem !important
-        left: -13.7rem !important
-    .circle_min1_right
-        background-color: hsla(217, 16%, 45%, 0.14)
-        top: -0.6rem !important
-        left: 21.7rem !important
-    .circle_min2_right
-        background-color: hsla(217, 16%, 45%, 0.10)
-        width: 300px
-        height: 300px
-        top: -2.9rem !important
-        left: 19.3rem !important
-    .circle_min3_right
-        background-color: hsla(217, 16%, 45%, 0.06)
-        width: 375px
-        height: 375px
-        top: -5.2rem !important
-        left: 17rem !important
-    .the_machine_picked
-        right: 18.75rem
-    .you_picked
-        left: 17.1875rem
-.game-picked
-    width: 30%
+.you_picked, .the_machine_picked
+    width: 50%
     display: flex
     align-items: center
     margin-top: 5%
     position: absolute
-    top: 200px
+    top: 9.375vw
+    justify-content: center
+    letter-spacing: 0.1rem
+.circle_min
+    border: none
+    border-radius: 100%
+    width: 225px
+    height: 225px
+    position: absolute
+.circle_min1_left
+    background-color: hsla(217, 16%, 45%, 0.14)
+    top: -0.6rem !important
+    left: -8.8rem !important
+.circle_min2_left
+    background-color: hsla(217, 16%, 45%, 0.10)
+    width: 300px
+    height: 300px
+    top: -3.1rem !important
+    left: -11.2rem !important
+.circle_min3_left
+    background-color: hsla(217, 16%, 45%, 0.06)
+    width: 375px
+    height: 375px
+    top: -5.3rem !important
+    left: -13.7rem !important
+.circle_min1_right
+    background-color: hsla(217, 16%, 45%, 0.14)
+    top: -0.6rem !important
+    left: 21.7rem !important
+.circle_min2_right
+    background-color: hsla(217, 16%, 45%, 0.10)
+    width: 300px
+    height: 300px
+    top: -2.9rem !important
+    left: 19.3rem !important
+.circle_min3_right
+    background-color: hsla(217, 16%, 45%, 0.06)
+    width: 375px
+    height: 375px
+    top: -5.2rem !important
+    left: 17rem !important
+.the_machine_picked
+    right: -7.5vw !important
+    top: -5vw !important
+.you_picked
+    left: -9vw !important
+    top: -5vw !important
+.game-picked
+    width: 30vw
+    display: flex
+    align-items: center
+    margin-top: 5vw
+    position: absolute
+    top: 13.8889vw
     justify-content: center
     .game1, .game2, .game3
-        top: 0px
-        bottom: 0px
-        left: 0px
-        right: 0px
+        top: 0vw
+        bottom: 0vw
+        left: 0vw
+        right: 0vw
         cursor: inherit
         transition: none
         &:hover
             transform: none
     .game1_user
-        top: 1.75rem !important
-        left: -6.4rem !important
+        top: 1.75vw !important
+        left: -6.4vw !important
     .game1_machine
-        top: 1.75rem !important
-        left: 24rem !important
+        top: 1.75vw !important
+        left: 25.5vw !important
 .play_again
     display: flex
     align-items: center
     justify-content: center
     flex-direction: column
     position: absolute
-    top: 20rem
+    top: 22.22vw
     .winner_is
         display: flex
         align-items: center
@@ -360,7 +361,7 @@ export default {
     display: flex
     align-items: center
     justify-content: center
-    width: 30%
+    width: 30vw
     height: 400px
 .images_game
     position: absolute
