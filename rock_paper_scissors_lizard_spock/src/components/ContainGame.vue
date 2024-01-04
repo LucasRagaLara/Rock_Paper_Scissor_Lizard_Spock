@@ -1,7 +1,7 @@
 <template>
         <div class="box_game">
             <div class="game animate__animated" :class="zoom_in_out" ref="OpenCloseNav" @animationend="finaltransition">
-                <img src="../assets/bg-triangle.svg" alt="" class="to_back">
+                <img src="../assets/bg-pentagon.svg" alt="" class="to_back">
                     <div class="images_game">
                         <div class="game1" @click="selectPaper">
                             <div class="game1-interior">
@@ -18,6 +18,16 @@
                                 <img src="../assets/icon-rock.svg">
                             </div>
                         </div>
+                        <div class="game4" @click="selectLizard">
+                            <div class="game3-interior">
+                                <img src="../assets/icon-lizard.svg">
+                            </div>
+                        </div>
+                        <div class="game5" @click="selectSpock">
+                            <div class="game3-interior">
+                                <img src="../assets/icon-spock.svg">
+                            </div>
+                        </div>
                     </div>
             </div>
         </div>
@@ -30,7 +40,7 @@
                 </div>
                 <div class="circle_min circle_min3_left animate__animated" :class="fade_in" v-show="show_left">
                 </div>
-                <div :class="userSuperiorClass" class="game1_user">
+                <div :class="userSuperiorClass" class="game1_user animate__animated animate__bounceIn">
                     <div :class="`${userInteriorClass}-interior`">
                         <img :src="userImage" alt="user choice">
                     </div>
@@ -50,7 +60,7 @@
                 </div>
                 <div class="circle_min circle_min3_right animate__animated" :class="fade_in" v-show="show_right">
                 </div>
-                <div :class="machineSuperiorClass" class="game1_machine">
+                <div :class="machineSuperiorClass" class="game1_machine animate__animated">
                     <div :class="`${machineInteriorClass}-interior`">
                         <img :src="machineImage">
                     </div>
@@ -95,7 +105,7 @@ export default {
             this.select_user = 'paper';
             setTimeout(() => {
                 this.selectMachine()
-            }, 2000)
+            }, 1000)
             setTimeout(() => {
                 this.winnerIs()
             }, 2000)
@@ -113,7 +123,7 @@ export default {
             this.select_user = 'scissors';
             setTimeout(() => {
                 this.selectMachine()
-            }, 2000)
+            }, 1000)
             setTimeout(() => {
                 this.winnerIs()
             }, 2000)
@@ -131,13 +141,49 @@ export default {
             this.select_user = 'rock';
             setTimeout(() => {
                 this.selectMachine()
+            }, 1000)
+            setTimeout(() => {
+                this.winnerIs()
             }, 2000)
+        },
+        selectLizard(){
+            console.log("Has seleccionado lizard")
+            let showpicks = this.$refs.pick;
+            if (this.zoom_in_out === ''){
+                this.zoom_in_out = 'animate__zoomOut';
+                showpicks.style.display = 'flex';
+            }
+            this.userSuperiorClass = "game4";
+            this.userInteriorClass = "game3";
+            this.userImage = require("../assets/icon-lizard.svg");
+            this.select_user = 'lizard';
+            setTimeout(() => {
+                this.selectMachine()
+            }, 1000)
+            setTimeout(() => {
+                this.winnerIs()
+            }, 2000)
+        },
+        selectSpock(){
+            console.log("Has seleccionado spock")
+            let showpicks = this.$refs.pick;
+            if (this.zoom_in_out === ''){
+                this.zoom_in_out = 'animate__zoomOut';
+                showpicks.style.display = 'flex';
+            }
+            this.userSuperiorClass = "game5";
+            this.userInteriorClass = "game3";
+            this.userImage = require("../assets/icon-spock.svg");
+            this.select_user = 'spock';
+            setTimeout(() => {
+                this.selectMachine()
+            }, 1000)
             setTimeout(() => {
                 this.winnerIs()
             }, 2000)
         },
         selectMachine(){
-            let machineOptions = ["rock", "paper", "scissors"];
+            let machineOptions = ["rock", "paper", "scissors", "lizard"];
             let randomIndex = Math.floor(Math.random() * machineOptions.length);
             let machineChoice = machineOptions[randomIndex];
             if (machineChoice == "rock"){
@@ -146,7 +192,7 @@ export default {
                     this.zoom_in_out = 'animate__zoomOut';
                     showpicks.style.display = 'flex';
                 }
-                this.machineSuperiorClass = "game3";
+                this.machineSuperiorClass = "game3 " + "animate__bounceIn";
                 this.machineInteriorClass = "game3";
                 this.machineImage = require("../assets/icon-rock.svg");
                 this.select_machine = 'rock';
@@ -156,7 +202,7 @@ export default {
                     this.zoom_in_out = 'animate__zoomOut';
                     showpicks.style.display = 'flex';
                 }
-                this.machineSuperiorClass = "game2";
+                this.machineSuperiorClass = "game2 " + "animate__bounceIn";
                 this.machineInteriorClass = "game2";
                 this.machineImage = require("../assets/icon-scissors.svg");
                 this.select_machine = 'scissors';
@@ -166,12 +212,32 @@ export default {
                     this.zoom_in_out = 'animate__zoomOut';
                     showpicks.style.display = 'flex';
                 }
-                this.machineSuperiorClass = "game1";
+                this.machineSuperiorClass = "game1 " + "animate__bounceIn";
                 this.machineInteriorClass = "game1";
                 this.machineImage = require("../assets/icon-paper.svg");
                 this.select_machine = 'paper';
-            }
+            } else if(machineChoice == "lizard") {
+                let showpicks = this.$refs.pick;
+                if (this.zoom_in_out === ''){
+                    this.zoom_in_out = 'animate__zoomOut';
+                    showpicks.style.display = 'flex';
+                }
+                this.machineSuperiorClass = "game4 " + "animate__bounceIn";
+                this.machineInteriorClass = "game3";
+                this.machineImage = require("../assets/icon-lizard.svg");
+                this.select_machine = 'lizard';
+            }else if(machineChoice == "spock") {
+                let showpicks = this.$refs.pick;
+                if (this.zoom_in_out === ''){
+                    this.zoom_in_out = 'animate__zoomOut';
+                    showpicks.style.display = 'flex';
+                }
+                this.machineSuperiorClass = "game5 " + "animate__bounceIn";
+                this.machineInteriorClass = "game3";
+                this.machineImage = require("../assets/icon-spock.svg");
+                this.select_machine = 'spock';
             // lo mismo para el resto
+            }
         },
         finaltransition(){
             let OpenCloseNav = this.$refs.OpenCloseNav;
@@ -191,7 +257,9 @@ export default {
             } else if (
                 (select_user === "paper" && machine_user === "rock") ||
                 (select_user === "rock" && machine_user === "scissors") ||
-                (select_user === "scissors" && machine_user === "paper")
+                (select_user === "scissors" && machine_user === "paper") ||
+                (select_user === "lizard" && (machine_user === "spock" || machine_user === "paper")) ||
+                (select_user === "spock" && (machine_user === "scissors" || machine_user === "rock"))
             ) {
                 result = "Winner is USER";
                 this.cont += 1;
@@ -209,7 +277,7 @@ export default {
             setTimeout(()=> {
                 this.show_play_again = true
                 this.zoom_in_down = 'animate__zoomInDown';
-            }, 2000)
+            }, 1000)
             this.$emit('update_number', this.cont);
         },
         play_again(){
@@ -306,7 +374,7 @@ export default {
     position: absolute
     top: 13.8889vw
     justify-content: center
-    .game1, .game2, .game3
+    .game1, .game2, .game3, .game4, .game5
         top: 0vw
         bottom: 0vw
         left: 0vw
@@ -361,11 +429,13 @@ export default {
     display: flex
     align-items: center
     justify-content: center
-    width: 30vw
-    height: 400px
+    width: 100vw
+    height: 32vw
+    img
+        width: 410px
 .images_game
     position: absolute
-.game1, .game2, .game3
+.game1, .game2, .game3, .game4, .game5
     position: absolute
     cursor: pointer
     content: ""
@@ -373,13 +443,13 @@ export default {
     width: 150px
     background-image: linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
     border-radius: 100%
-    top: -200px
-    right: 50px
+    top: -130px
+    right: -260px
     transition: ease-in-out
     transition-duration: 0.2s
     &:hover
         transform: scale(1.1)
-.game1-interior, .game2-interior, .game3-interior
+.game1-interior, .game2-interior, .game3-interior, game4-interior, game5-interior
     position: relative
     height: 110px
     width: 110px
@@ -396,14 +466,26 @@ export default {
         width: 50%
 .game2
     background-image: linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
-    top: -200px
-    right: -200px
+    top: -250px
+    right: -80px
     &:hover
         transform: scale(1.1)
 .game3
     background-image: linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
-    top: 0px
-    left: -75px
+    top: 90px
+    left: 40px
+    &:hover
+        transform: scale(1.1)
+.game4
+    background-image: linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%))
+    top: 90px
+    left: -190px
+    &:hover
+        transform: scale(1.1)
+.game5
+    background-image: linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%))
+    top: -130px
+    left: -255px
     &:hover
         transform: scale(1.1)
 </style>

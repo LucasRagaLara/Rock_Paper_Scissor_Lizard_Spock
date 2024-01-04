@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="image_rules">
-                <img src="../assets/image-rules.svg">
+                <img src="../assets/image-rules-bonus.svg">
             </div>
         </div>
     </div>
@@ -94,6 +94,7 @@ export default {
         margin-bottom: 5%
         img
             width: 65%
+            margin-bottom: 5%
 .boton_foot
     position: absolute
     bottom: 30px

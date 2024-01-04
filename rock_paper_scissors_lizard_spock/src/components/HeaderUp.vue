@@ -5,6 +5,8 @@
                 <li>ROCK</li>
                 <li>PAPER</li>
                 <li>SCISSORS</li>
+                <li>LIZARD</li>
+                <li>SPOCK</li>
                 <!-- <img src="../src/assets/logo.svg" alt=""> -->
             </ul>
             <div class="box_score">
@@ -43,18 +45,19 @@ export default {
         border: solid hsl(217, 16%, 45%)
         border-radius: 15px
         width: 50%
+        height: 120px
         display: flex
         align-items: center
-        padding: 1% 2%
+        padding: 2%
         .letters
             width: 80%
         .box_score
             background-color: #fff
             border-radius: 5px
-            width: 125px
-            padding-top: 1%
-            height: 100px
+            width: 120px
+            height: 90px
             display: flex
+            padding: 1% 0
             flex-direction: column
             align-items: center
             justify-content: center
@@ -69,7 +72,8 @@ export default {
         ul
             list-style: none
             li
-                font-size: 32px
+                font-size: 24px
                 font-weight: bold
-                line-height: 1.5rem
+                line-height: 1.1rem
+                letter-spacing: 0.1rem
 </style>
