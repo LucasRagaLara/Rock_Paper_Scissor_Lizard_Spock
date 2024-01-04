@@ -33,7 +33,7 @@
         </div>
         <div id="picked" ref="pick">
             <div class="images_game game-picked">
-                <h3 class="you_picked">You picked</h3>
+                <h3 class="you_picked">YOU PICKED</h3>
                 <div class="circle_min circle_min1_left animate__animated" :class="fade_in" v-show="show_left">
                 </div>
                 <div class="circle_min circle_min2_left animate__animated" :class="fade_in" v-show="show_left">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="images_game game-picked">
-                <h3 class="the_machine_picked">The Computer picked</h3>
+                <h3 class="the_machine_picked">THE COMPUTER PICKED</h3>
                 <div class="circle_min circle_min1_right animate__animated" :class="fade_in" v-show="show_right">
                 </div>
                 <div class="circle_min circle_min2_right animate__animated" :class="fade_in" v-show="show_right">
