@@ -52,20 +52,20 @@
                     <button @click="play_again">PLAY AGAIN</button>
                 </div>
             </div>
-            <div class="images_game game-picked">
-                <h3 class="the_machine_picked">THE COMPUTER PICKED</h3>
-                <div class="circle_min circle_min1_right animate__animated" :class="fade_in" v-show="show_right">
-                </div>
-                <div class="circle_min circle_min2_right animate__animated" :class="fade_in" v-show="show_right">
-                </div>
-                <div class="circle_min circle_min3_right animate__animated" :class="fade_in" v-show="show_right">
-                </div>
-                <div :class="machineSuperiorClass" class="game1_machine animate__animated">
-                    <div :class="`${machineInteriorClass}-interior`">
-                        <img :src="machineImage">
+                <div class="images_game game-picked">
+                        <h3 class="the_machine_picked">THE COMPUTER PICKED</h3>
+                        <div class="circle_min circle_min1_right animate__animated" :class="fade_in" v-show="show_right">
+                        </div>
+                        <div class="circle_min circle_min2_right animate__animated" :class="fade_in" v-show="show_right">
+                        </div>
+                        <div class="circle_min circle_min3_right animate__animated" :class="fade_in" v-show="show_right">
+                        </div>
+                    <div :class="machineSuperiorClass" class="game1_machine animate__animated">
+                        <div :class="`${machineInteriorClass}-interior`">
+                            <img :src="machineImage">
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
 </template>
 <script>
@@ -307,6 +307,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
+
+// general picked
 #picked
     display: none
     align-items: center
@@ -322,6 +324,8 @@ export default {
     top: 9.375vw
     justify-content: center
     letter-spacing: 0.1rem
+
+// Circles positions
 .circle_min
     border: none
     border-radius: 100%
@@ -330,48 +334,52 @@ export default {
     position: absolute
 .circle_min1_left
     background-color: hsla(217, 16%, 45%, 0.14)
-    top: -0.6rem !important
-    left: -8.8rem !important
+    top: -0.6rem 
+    left: -8.8rem 
 .circle_min2_left
     background-color: hsla(217, 16%, 45%, 0.10)
     width: 300px
     height: 300px
-    top: -3.1rem !important
-    left: -11.2rem !important
+    top: -3.1rem
+    left: -11.2rem
 .circle_min3_left
     background-color: hsla(217, 16%, 45%, 0.06)
     width: 375px
     height: 375px
-    top: -5.3rem !important
-    left: -13.7rem !important
+    top: -5.3rem
+    left: -13.7rem
 .circle_min1_right
     background-color: hsla(217, 16%, 45%, 0.14)
-    top: -0.6rem !important
-    left: 21.7rem !important
+    top: -9.6px
+    left: 347.2px
 .circle_min2_right
     background-color: hsla(217, 16%, 45%, 0.10)
     width: 300px
     height: 300px
-    top: -2.9rem !important
-    left: 19.3rem !important
+    top: -46.4px
+    left: 308.8px
+
 .circle_min3_right
     background-color: hsla(217, 16%, 45%, 0.06)
     width: 375px
     height: 375px
-    top: -5.2rem !important
-    left: 17rem !important
+    top: -83.2px
+    left: 272px
+
+// Position letters picked
 .the_machine_picked
-    right: -7.5vw !important
-    top: -5vw !important
+    right: -7.5vw
+    top: -5vw
 .you_picked
-    left: -9vw !important
-    top: -5vw !important
+    left: -9vw
+    top: -5vw
+
+// Game images and picked positions
 .game-picked
-    width: 30vw
+    width: 30%
     display: flex
     align-items: center
     margin-top: 5vw
-    position: absolute
     top: 13.8889vw
     justify-content: center
     .game1, .game2, .game3, .game4, .game5
@@ -384,11 +392,12 @@ export default {
         &:hover
             transform: none
     .game1_user
-        top: 1.75vw !important
-        left: -6.4vw !important
+        top: 1.75vw
+        left: -6.4vw
     .game1_machine
-        top: 1.75vw !important
-        left: 25.5vw !important
+        top: 1.75vw
+        left: 25.5vw
+// Button and letter play again
 .play_again
     display: flex
     align-items: center
@@ -420,6 +429,8 @@ export default {
             cursor: pointer
             &:hover
                 transform: scale(1.1)
+
+// Game details menu
 .box_game
     display: flex
     align-items: center
@@ -488,4 +499,100 @@ export default {
     left: -255px
     &:hover
         transform: scale(1.1)
+@media only screen and (min-width: 1920px)
+    //Picked images positions
+    .game1_user
+        top: 1.5vw !important
+        left: -5.0vw !important
+    .game1_machine
+        top: 1.5vw !important
+        left: 26.5vw !important
+    //Circles positions
+    .circle_min1_left
+        top: -0.6rem !important
+        left: -8.8rem !important
+    .circle_min2_left
+        top: -3.1rem !important
+        left: -11.2rem !important
+    .circle_min3_left
+        top: -5.5rem !important
+        left: -13.4rem !important
+    .circle_min1_right
+        top: -0.5rem !important
+        left: 31.5rem !important
+    .circle_min2_right
+        top: -2.9rem !important
+        left: 29rem !important
+    .circle_min3_right
+        top: -5.3rem !important
+        left: 26.7rem !important
+@media only screen and (min-width: 1360px) and (max-width: 1920px)
+    .game
+        img
+            width: 375px
+    //width and height images
+    .game1, .game2, .game3, .game4, .game5
+        height: 125px
+        width: 125px
+        top: -110px
+        right: -230px
+    .game1-interior, .game2-interior, .game3-interior, game4-interior, game5-interior
+        height: 85px
+        width: 85px
+        top: 16%
+        left: 16%
+        box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.5), inset 0 -10px 15px -10px rgba(0, 0, 0, 0.5)
+        img
+            width: 50%
+    .game2
+        top: -225px
+        right: -68px
+    .game3
+        top: 100px
+        left: 50px
+    .game4
+        top: 100px
+        left: -170px
+    .game5
+        top: -110px
+        left: -230px
+    //Positions picked images
+    .game1_user
+        top: 1.5vw
+        left: -5.0vw
+    .game1_machine
+        top: 1.5vw
+        left: 26.5vw
+    //Circles positions
+    .circle_min1_left
+        width: 175px
+        height: 175px
+        top: -0.1rem
+        left: -7.2rem
+    .circle_min2_left
+        width: 250px
+        height: 250px
+        top: -2.4rem
+        left: -9.5rem
+    .circle_min3_left
+        width: 325px
+        height: 325px
+        top: -4.8rem
+        left: -12rem
+    .circle_min1_right
+        width: 175px
+        height: 175px
+        top: -0.2rem
+        left: 20.3rem
+    .circle_min2_right
+        width: 250px
+        height: 250px
+        top: -2.4rem
+        left: 18rem
+    .circle_min3_right
+        width: 325px
+        height: 325px
+        top: -4.8rem
+        left: 15.6rem
+// @media only screen and (min-width: 1280px) and (max-width: 1360px)
 </style>

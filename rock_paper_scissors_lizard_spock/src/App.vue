@@ -33,14 +33,15 @@ export default {
 }
 </script>
 <style lang="sass">
+  body
+      width: 100% !important
+      background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%))
+      background-size: cover
+      min-height: 100vh
+      background-attachment: fixed
   *
     margin: 0
     padding: 0
     box-sizing: border-box
     font-family: 'Barlow Semi Condensed', sans-serif
-  #App
-    width: 100%
-    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%))
-    background-size: cover
-    min-height: 100vh
 </style>

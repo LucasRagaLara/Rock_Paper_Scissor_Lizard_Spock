@@ -76,4 +76,8 @@ export default {
                 font-weight: bold
                 line-height: 1.1rem
                 letter-spacing: 0.1rem
+@media only screen and (min-width: 1360px) and (max-width: 1920px)
+    ul
+        li
+            line-height: 1.2rem !important
 </style>
